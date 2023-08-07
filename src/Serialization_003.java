@@ -1,8 +1,9 @@
 import java.io.*;
 
 class Cat implements Serializable{
+    private static final long serialversionUID = 123456L;
     String name = "Doremon";
-    transient int age = 2;
+    transient final int age = 2;
 }
 
 public class Serialization_003 {
@@ -13,6 +14,9 @@ public class Serialization_003 {
         FileOutputStream fileOutputStream = new FileOutputStream("cat1.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(cat1);
+        fileOutputStream.close();
+        objectOutputStream.close();
+        System.out.println("Serialization: ");
 
 
 //        Deserlization
